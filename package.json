@@ -3,7 +3,7 @@
   "module": "index.js",
   "type": "module",
   "scripts": {
-    "serve": "bun run index.js"
+    "serve": "bun run src/index.js"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -13,6 +13,6 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "figlet": "^1.8.0"
+    "bcrypt": "^5.1.1"
   }
 }
