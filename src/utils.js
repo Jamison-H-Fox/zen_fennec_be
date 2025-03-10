@@ -1,3 +1,5 @@
+// use the export const pattern rather than module.exports
+
 const matchPath = (pattern, path) => {
   const patternSegments = pattern.split('/')
   const pathSegments = path.split('/')

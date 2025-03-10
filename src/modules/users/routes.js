@@ -9,10 +9,12 @@ export const userRoutes = [
         const { name, email, password } = await req.json()
         const newUser = await registerUser(name, email, password)
         console.log('New user:', newUser)
+        // Can I use Response.json() here?
         return jsonResponse(newUser)
       },
       GET: async (req) => {
         const allUsers = await getAllUsers()
+        // Can I use Response.json() here?
         return jsonResponse(allUsers)
       },
       PUT: async (req) => {

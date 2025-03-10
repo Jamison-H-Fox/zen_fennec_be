@@ -1,6 +1,8 @@
 import { matchPath, jsonResponse } from './utils'
 import { userRoutes } from './modules/users/routes.js'
 
+// https://bun.sh/docs/api/http
+// I think I can simplify my routing patterns using Bun
 const routes = [
   {
     pattern: '/',
@@ -11,6 +13,8 @@ const routes = [
   ...userRoutes,
 ]
 
+// I think this handleRequest function will be unnecessary
+// if I use the pattern described in the Bun documentation
 export async function handleRequest(req) {
   const url = new URL(req.url)
   const path = url.pathname

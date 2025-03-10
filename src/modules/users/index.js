@@ -5,7 +5,7 @@ export async function registerUser(name, email, password) {
   const passwordHash = await Bun.password.hash(password)
   const userId = uuidv4()
 
-  // I should abstract a prepareQuery() function tho
+  // TODO: I should abstract a prepareQuery() function tho
   const createUserQuery =
     'INSERT INTO users (id, name, email, password_hash) VALUES (?, ?, ?, ?)'
   const createUser = db.prepare(createUserQuery)
