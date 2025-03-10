@@ -19,7 +19,6 @@ export async function handleRequest(req) {
 
   for (const route of routes) {
     const params = matchPath(route.pattern, path)
-    console.log('Params:', params)
 
     if (params !== null) {
       const handler = route.handlers[method]

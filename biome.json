@@ -8,7 +8,10 @@
         "noDelete": "off",
         "noAccumulatingSpread": "off"
       },
-      "correctness": {},
+      "correctness": {
+        "noUnusedVariables": "error",
+        "noUndeclaredVariables": "error"
+      },
       "style": {
         "noParameterAssign": "off",
         "noUselessElse": "off"
