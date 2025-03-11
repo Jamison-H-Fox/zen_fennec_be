@@ -1,46 +1,26 @@
 import { registerUser, loginUser, getAllUsers } from './index.js'
 import { jsonResponse } from '../../utils.js'
 
-export const userRoutes = [
-  {
-    pattern: '/users',
-    handlers: {
-      POST: async (req) => {
-        const { name, email, password } = await req.json()
-        const newUser = await registerUser(name, email, password)
-        console.log('New user:', newUser)
-        // Can I use Response.json() here?
-        return jsonResponse(newUser)
-      },
-      GET: async (req) => {
-        const allUsers = await getAllUsers()
-        // Can I use Response.json() here?
-        return jsonResponse(allUsers)
-      },
-      PUT: async (req) => {
-        return new Response('PUT /users')
-      },
-      DELETE: async (req) => {
-        return new Response('DELETE /users')
-      },
+export const userRoutes = {
+  '/users': {
+    POST: async (req) => {
+      const { name, email, password } = await req.json()
+      // TODO: add error handling for duplicate email
+      const newUser = await registerUser(name, email, password)
+      console.log('New user:', newUser)
+
+      return Response.json(newUser)
+    },
+    GET: async () => {
+      const allUsers = await getAllUsers()
+
+      return Response.json(allUsers)
+    },
+    PUT: async () => {
+      return Response.json({ message: 'POST request to /users' })
+    },
+    DELETE: async () => {
+      return Response.json({ message: 'DELETE request to /users' })
     },
   },
-  {
-    pattern: '/users/register',
-    handlers: {
-      POST: async (req) => {},
-    },
-  },
-  {
-    pattern: '/users/login',
-    handlers: {
-      POST: async (req) => {
-        const { email, password } = await req.json()
-        const loginSuccessful = await loginUser(email, password)
-        return new Response(
-          loginSuccessful ? 'Login successful' : 'Login failed',
-        )
-      },
-    },
-  },
-]
+}
