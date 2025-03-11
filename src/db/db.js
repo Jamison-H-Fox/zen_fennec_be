@@ -13,8 +13,6 @@ db.run(`
   )
 `)
 
-// TODO: implement this helper function prepareQuery()
-
 export default db
 
 // To manage database migrations without using an ORM or query builder tools, you can write your own migration scripts using plain SQL and the built-in Bun SQLite drivers. Here is a step-by-step guide on how to manage migrations:
