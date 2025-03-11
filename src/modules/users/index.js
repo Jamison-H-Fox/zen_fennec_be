@@ -5,14 +5,11 @@ export async function registerUser(name, email, password) {
   const passwordHash = await Bun.password.hash(password)
   const userId = uuidv4()
 
-  // TODO: I should abstract a prepareQuery() function tho
   const createUserQuery =
     'INSERT INTO users (id, name, email, password_hash) VALUES (?, ?, ?, ?)'
   const createUser = db.prepare(createUserQuery)
   await createUser.run(userId, name, email, passwordHash)
 
-  // it seems like sqlite can't return * from insert
-  // so we have to do a separate query to get the user
   const getUserQuery = 'SELECT * FROM users WHERE id = ?'
   const getUser = db.prepare(getUserQuery)
   const user = await getUser.get(userId)
