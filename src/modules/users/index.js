@@ -17,15 +17,8 @@ export async function registerUser(name, email, password) {
   return user
 }
 
-export async function loginUser(email, password) {
-  const user = db.query('SELECT * FROM users WHERE email = ?', email).get()
-  if (user && (await bcrypt.compare(password, user.password_hash))) {
-    console.log('Login successful:', { email })
-    return true
-  } else {
-    console.log('Login failed:', { email })
-    return false
-  }
+export async function loginUser() {
+  // wip
 }
 
 export async function getAllUsers() {
