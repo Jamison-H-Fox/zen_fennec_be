@@ -1,5 +1,4 @@
 import { registerUser, loginUser, getAllUsers } from './index.js'
-import { jsonResponse } from '../../utils.js'
 
 export const userRoutes = {
   '/users': {
