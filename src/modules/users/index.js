@@ -17,8 +17,26 @@ export async function registerUser(name, email, password) {
   return user
 }
 
-export async function loginUser() {
-  // wip
+export async function loginUser(email, password) {
+  const getUserByEmailQuery = 'SELECT * FROM users WHERE email = ?'
+  const getUserByEmail = db.prepare(getUserByEmailQuery)
+  const user = await getUserByEmail.get(email)
+
+  if (!user) {
+    throw new Error('Invalid email or password')
+  }
+
+  const isPasswordValid = await Bun.password.verify(
+    password,
+    user.password_hash,
+  )
+
+  if (!isPasswordValid) {
+    throw new Error('Invalid email or password')
+  }
+
+  const { password_hash, ...userWithoutPassword } = user
+  return userWithoutPassword
 }
 
 export async function getAllUsers() {
