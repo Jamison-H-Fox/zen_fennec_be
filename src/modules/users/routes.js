@@ -25,7 +25,7 @@ export const userRoutes = {
       return Response.json({ message: 'DELETE request to /users' })
     },
   },
-  '/login': {
+  '/users/login': {
     POST: async (req) => {
       const { email, password } = await req.json()
       const user = await loginUser(email, password)

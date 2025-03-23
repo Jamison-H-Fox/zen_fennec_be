@@ -1,0 +1,5 @@
+ALTER TABLE players
+ADD COLUMN age TEXT;
+
+ALTER TABLE players
+ADD COLUMN gender TEXT;

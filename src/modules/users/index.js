@@ -40,7 +40,7 @@ export async function loginUser(email, password) {
 }
 
 export async function getAllUsers() {
-  const getAllUsersQuery = 'SELECT * FROM users'
+  const getAllUsersQuery = 'SELECT name, email FROM users'
   const getAllUsers = db.prepare(getAllUsersQuery)
   const allUsers = await getAllUsers.all()
 

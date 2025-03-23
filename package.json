@@ -3,7 +3,7 @@
   "module": "index.js",
   "type": "module",
   "scripts": {
-    "serve": "bun --watch src/index.js",
+    "serve": "bun --watch --no-clear-screen src/index.js",
     "update-database-local": "bun run src/db/migrate.js"
   },
   "devDependencies": {
